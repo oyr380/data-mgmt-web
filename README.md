@@ -1,8 +1,12 @@
 # data-mgmt-web
 Website for large scale data management project
 
+<<<<<<< HEAD
 **PREREQ**
 
+=======
+PREREQ
+>>>>>>> b261c4f47efa0c00b920a48c13abe2893ad6ba8b
 Start up a new python virtual environment using "python3 -m venv [NAME OF ENVIRONMENT]" or any other virtual enviornment wrapper of your choosing
 After doing so, on windows run "[NAME OF ENVIRONMENT]\Scripts\activate.bat"
                 on linux run "[NAME OF ENVIRONMENT]/bin/activate"
@@ -10,8 +14,12 @@ More info for python virtual environment: https://docs.python.org/3/tutorial/ven
 
 Then install required modules in requirements.txt
 Should be "pip install -r requirements.txt" (although I'm not too sure).
+<<<<<<< HEAD
 
 **END OF PREREQ**
+=======
+END OF PREREQ
+>>>>>>> b261c4f47efa0c00b920a48c13abe2893ad6ba8b
 
 To run the server, simply run "python manage.py runserver" in the directory manage.py is under.
 At this point you can test if the application works correctly by going to localhost:8000 and localhost:8000/about.
