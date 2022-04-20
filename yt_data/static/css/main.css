@@ -1,0 +1,14 @@
+.navbar{
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+}
+.channelimage{
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+.thumbs{
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}

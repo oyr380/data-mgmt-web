@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center">
+  <div>
+    <h1>Top 50 Most Subscribed Youtube Channels!</h1>
+      {% for channel in yt_channels %}
+          <a href="{% url 'channel' channel.name %}"><h1> {{ channel.name }} Subs: {{ channel.subscriber_count }} </h1></a>
+      {% endfor %} 
+  </div>
+</div>
+{% endblock %}

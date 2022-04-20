@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='yt_data_home'),
-    path('about/', views.about, name='yt_data_about'),
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('channel/<chname>/', views.channel, name='channel'),
+    path('channel/', views.channel, name='yt_data_channel'),
 ]
