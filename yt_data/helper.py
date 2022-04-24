@@ -1,4 +1,5 @@
 import pymongo
+import math
 
 class MongoInstance:
     def __init__(self):
@@ -22,3 +23,12 @@ class MongoInstance:
     def grab_most_liked(self, name):
         video = self.videos.find({"channel":name}).sort('like_count', -1).limit(1)
         return video[0]
+    
+    def grab_max_pages(self, name) -> int:
+        video_count = self.videos.count_documents({"channel":name})
+        max_pages = math.ceil(video_count / 50)
+        return max_pages
+
+    def grab_channel_videos(self, name, skip):
+        videos = self.videos.find({"channel":name}, {"webpage_url":1}).skip(skip).limit(50)
+        return [x['webpage_url'] for x in videos]

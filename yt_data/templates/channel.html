@@ -45,9 +45,13 @@
 </div>
 {% endfor %}
 
- <a href="/channel/{{ chname }}/?page={{ page }}">First page</a>
- <a href="/channel/{{ chname }}/?page={{ page|add:'-1' }}">Previous</a>
- <a href="/channel/{{ chname }}/?page={{ page|add:'+1' }}">Next</a>
+ <a href="/channel/{{ chname }}/?page=1">First page</a>
+ {% if page != 1 %}
+  <a href="/channel/{{ chname }}/?page={{ page|add:'-1' }}">Previous</a>
+ {% endif %}
+ {% if page|add:0 != total_pages|add:0 %}
+  <a href="/channel/{{ chname }}/?page={{ page|add:'+1' }}">Next</a>
+ {% endif %}
  <a href="/channel/{{ chname }}/?page={{ total_pages }}">Last</a>
 
 
