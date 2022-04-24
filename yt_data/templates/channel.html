@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Contact{% endblock %}
+{% block title %}{{chname}}{% endblock %}
 {% block content %}
 <br>
 <div class="d-flex justify-content-start">
@@ -12,27 +12,27 @@
 </div>
 <div class="row">
   <div class="col d-flex justify-content-center">
-    <img class="channelimage rounded-circle" src="https://yt3.ggpht.com/ytc/AKedOLSk-AeebphZllYPnC6dyL4Ebaufx9EfWWcpWi5kvw=s88-c-k-c0x00ffffff-no-rj">
+    <img class="channelimage rounded-circle" src="{{ channel.thumbnails.17.url }}">
   </div>
 </div>
 <br>
 <div class="row">
   <div class="col-md-3 align-middle">
-    <p>Most Viewed Video: Eminem - Love The Way You Lie ft. Rihanna</p>
+    <p>Most Viewed Video: {{ most_viewed.title }}</p>
   </div>
   <div class="col-md-3">
     <iframe width="420" height="315"
-      src="https://www.youtube.com/embed/X-TkrWpO75k">
+      src="https://www.youtube.com/embed/{{ most_viewed.id }}">
     </iframe>
   </div>
 </div>
 <div class="row">
   <div class="col-md-3">
-    <p>Most Liked Video: Eminem - Love The Way You Lie ft. Rihanna</p>
+    <p>Most Liked Video: {{ most_liked.title }}</p>
   </div>
   <div class="col-md-9">
     <iframe width="420" height="315"
-      src="https://www.youtube.com/embed/qEgu2xx5hjw">
+      src="https://www.youtube.com/embed/{{ most_liked.id }}">
     </iframe>
   </div>
 </div>
@@ -44,6 +44,11 @@
   <p>{{ vid }}</p>
 </div>
 {% endfor %}
+
+ <a href="/channel/{{ chname }}/?page={{ page }}">First page</a>
+ <a href="/channel/{{ chname }}/?page={{ page|add:'-1' }}">Previous</a>
+ <a href="/channel/{{ chname }}/?page={{ page|add:'+1' }}">Next</a>
+ <a href="/channel/{{ chname }}/?page={{ total_pages }}">Last</a>
 
 
 {% endblock %}
