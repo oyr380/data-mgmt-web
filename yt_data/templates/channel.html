@@ -39,20 +39,38 @@
 <div class="d-flex justify-content-center">
   <h1>List Of Videos</h1>
 </div>
-{% for vid in videos %}
-<div class="d-flex justify-content-center">
-  <p>{{ vid }}</p>
+<div class="container-fluid"></div>
+<table class="table videotable table-sm table-hover table-bordered table-striped table-dark">
+  <thead>
+    <th scope="col">Link to Video</th>
+    <th class="text-center" scope="col">Title of Video</th>
+    <th scope="col">Video Thumbnail</th>
+    <th scope="col">Video Info</th>
+  </thead>
+  <tbody>
+    {% for vid in videos %}
+      <tr>
+        <td><a href="{{ vid.0 }}">Link</a></td>
+        <td class="text-center">{{ vid.1 }}</td>
+        <td><img class="thumbs" src="{{ vid.2 }}"></td>
+        <td><a href="{% url 'video' vid.3 %}" class="btn btn-secondary vidinfo" role="button">Info</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  <ul class="pagination justify-content-end">
+    <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page=1">First page</a></li>
+    {% if page != 1 %}
+    <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page={{ page|add:'-1' }}">Previous</a></li>
+    {% endif %}
+    {% if page|add:0 != total_pages|add:0 %}
+    <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page={{ page|add:'+1' }}">Next</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page={{ total_pages }}">Last</a></li>
+  </ul>
 </div>
-{% endfor %}
 
- <a href="/channel/{{ chname }}/?page=1">First page</a>
- {% if page != 1 %}
-  <a href="/channel/{{ chname }}/?page={{ page|add:'-1' }}">Previous</a>
- {% endif %}
- {% if page|add:0 != total_pages|add:0 %}
-  <a href="/channel/{{ chname }}/?page={{ page|add:'+1' }}">Next</a>
- {% endif %}
- <a href="/channel/{{ chname }}/?page={{ total_pages }}">Last</a>
+
 
 
 {% endblock %}

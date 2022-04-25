@@ -51,3 +51,6 @@ def channel(request, chname=''):
         'channel' : channel,
     }
     return render(request, 'channel.html', context)
+
+def video(request, id=''):
+    return render(request, 'video.html')
