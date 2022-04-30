@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center">
+<br>
+<div class="d-flex justify-content-center text-center">
   <div>
     <h1>Top 50 Most Subscribed Youtube Channels!</h1>
+  </div>
+</div>
+<div class="d-flex justify-content-center text-center">
+  <form action="/" method="post">
+
+    {% csrf_token %}
+
+      <div class="form-group">
+        <input type="input" class="form-control" name="search" placeholder="Search for Channel">
+      </div>
+      <button type="submit" class="btn btn-dark">Search</button>
+  </form>
+</div>
+<div class="d-flex justify-content-center text-center">
+  <div>
+    {% if yt_channels %}
       {% for channel in yt_channels %}
           <a href="{% url 'channel' channel.name %}"><h1> {{ channel.name }} Subs: {{ channel.subscriber_count }} </h1></a>
       {% endfor %} 
+    {% else %}
+          <h2> No Channels Found! </h2>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

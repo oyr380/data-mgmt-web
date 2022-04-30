@@ -39,6 +39,17 @@
 <div class="d-flex justify-content-center">
   <h1>List Of Videos</h1>
 </div>
+<div class="d-flex justify-content-center text-center">
+  <form action="/channel/{{chname}}/" method="post">
+
+    {% csrf_token %}
+
+      <div class="form-group">
+        <input type="input" class="form-control" name="search" placeholder="Search for Videos">
+      </div>
+      <button type="submit" class="btn btn-dark">Search</button>
+  </form>
+</div>
 <div class="container-fluid"></div>
 <table class="table videotable table-sm table-hover table-bordered table-striped table-dark">
   <thead>
@@ -53,11 +64,12 @@
         <td><a href="{{ vid.0 }}">Link</a></td>
         <td class="text-center">{{ vid.1 }}</td>
         <td><img class="thumbs" src="{{ vid.2 }}"></td>
-        <td><a href="{% url 'video' vid.3 %}" class="btn btn-secondary vidinfo" role="button">Info</a></td>
+        <td><a href="{% url 'video' chname vid.3 %}" class="btn btn-secondary vidinfo" role="button">Info</a></td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
+{% if page %}
   <ul class="pagination justify-content-end">
     <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page=1">First page</a></li>
     {% if page != 1 %}
@@ -68,6 +80,7 @@
     {% endif %}
     <li class="page-item"><a class="page-link" href="/channel/{{ chname }}/?page={{ total_pages }}">Last</a></li>
   </ul>
+{% endif %}
 </div>
 
 

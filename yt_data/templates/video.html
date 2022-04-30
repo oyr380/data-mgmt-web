@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}{{video.title}}{% endblock %}
+{% block content %}
+<br>
+<div class="d-flex justify-content-start">
+  <div>
+    <button onclick="location.href = '/channel/{{video.channel}}'" type="button" class="btn btn-dark">Return to Channel</button>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+    <h1>{{ video.title }}</h1>  
+</div>
+<div class="col d-flex justify-content-center">
+    <iframe width="500" height="300"
+        src="https://www.youtube.com/embed/{{ video.id }}">
+    </iframe>
+</div>
+<br>
+<div class="d-flex justify-content-center">
+  <h1>Statistics</h1>  
+</div>
+<div class="row">
+  <div class="col-md-3 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">View Count</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{video.view_count}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">Like Count</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{video.like_count}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">Likes per View</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{lpv}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">Video Duration</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{duration}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+{% if comments == 0 %}
+<div class="d-flex justify-content-center">
+  <h1>No Comments to Display!</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <div>(Either kids video or unpopular video!)</div>
+  <div><p><small><em>Or we didn't get to it</em></small></p></div>
+</div>
+
+{% else %}
+<div class="d-flex justify-content-center">
+  <h1>Random Comments</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <div>Total Comments: {{total_coms}}</div>
+</div>
+<div class="d-flex justify-content-end">
+  <div>
+    <button onclick="location.reload()" type="button" class="btn btn-dark">Generate New Comments</button>
+  </div>
+</div>
+<br>
+  {% for com in comments %}
+  <div class="comments col-md-4 d-flex card text-center text-white bg-dark mb-3" width="10rem">
+    {% if com.is_favorited %}
+      <div class="card-header" style="color:red">❤
+    {% else %}
+      <div class="card-header">
+    {% endif %}
+      Commenter: {{com.author}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{com.text}}</h5>
+    </div>
+    <div class="card-footer text-muted">
+      Likes: {{com.like_count}}
+    </div>
+  </div>
+  {% endfor %}
+  <div class="d-flex justify-content-end">
+    <div>
+      <button onclick="location.reload()" type="button" class="btn btn-dark">Generate New Comments</button>
+    </div>
+  </div>
+  <br>
+{% endif %}
+{% endblock %}
