@@ -31,7 +31,9 @@ def about(request):
     return render(request, 'about.html')
 
 def channel(request, chname=''):
+    
     most_liked = instance.grab_most_liked(chname)
+    
     most_viewed = instance.grab_most_viewed(chname)
     if request.method == 'POST':
         query = request.POST['search']
@@ -56,7 +58,10 @@ def channel(request, chname=''):
         else:
             page = 1
             skip = 50 * (page - 1)
+            start = time.time()
             videos = instance.grab_channel_videos(chname, skip)
+            end = time.time()
+            print(end-start)
             #default query (find().limit(10))
     context = {
         'chname' : chname,
