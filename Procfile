@@ -1,0 +1,1 @@
+web: gunicorn yt_data_mgmt.wsgi
