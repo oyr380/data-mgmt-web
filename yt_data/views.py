@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from yt_data.helper import MongoInstance, generate_random_comments, likes_per_view, s_to_m
+from yt_data.helper import MongoInstance, date_convert, generate_random_comments, likes_per_view, s_to_m
 import time
 
 instance = MongoInstance()
@@ -94,6 +94,7 @@ def video(request, _id='', chname=''):
     
     lpv = likes_per_view(video['like_count'],video['view_count'])
     duration = s_to_m(video['duration'])
+    date = date_convert(video['upload_date'])
     context = {
         'video' : video, 
         'id' : _id,
@@ -101,5 +102,6 @@ def video(request, _id='', chname=''):
         'total_coms' : total_coms,
         'lpv' : lpv,
         'duration': duration,
+        'date': date,
         }
     return render(request, 'video.html', context)

@@ -22,7 +22,7 @@
   <div>
     {% if yt_channels %}
       {% for channel in yt_channels %}
-          <a href="{% url 'channel' channel.name %}"><h1> {{ channel.name }} Subs: {{ channel.subscriber_count }} </h1></a>
+          <a href="{% url 'channel' channel.name %}"><h3> {{ channel.name }} Subs: {{ channel.subscriber_count }} </h3></a>
       {% endfor %} 
     {% else %}
           <h2> No Channels Found! </h2>

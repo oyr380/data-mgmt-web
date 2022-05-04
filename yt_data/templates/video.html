@@ -20,7 +20,7 @@
   <h1>Statistics</h1>  
 </div>
 <div class="row">
-  <div class="col-md-3 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center">
     <div class="card text-white bg-dark">
       <h5 class="card-header">View Count</h5>
       <div class="card-body">
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center">
     <div class="card text-white bg-dark">
       <h5 class="card-header">Like Count</h5>
       <div class="card-body">
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center">
     <div class="card text-white bg-dark">
       <h5 class="card-header">Likes per View</h5>
       <div class="card-body">
@@ -44,11 +44,49 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center">
     <div class="card text-white bg-dark">
       <h5 class="card-header">Video Duration</h5>
       <div class="card-body">
         <h5 class="card-title text-center">{{duration}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">Upload Date</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{date}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header">Categories</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{% for category in video.categories %}{{category}}{% if forloop.counter != video.categories|length %},&nbsp;{% endif %}{% endfor %}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row justify-content-center">
+  <div class="col-md-6 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header text-center">Tags</h5>
+      <div class="card-body">
+        <h5 class="card-title text-center">{% for tag in video.tags %}{{tag}}{% if forloop.counter != video.tags|length %},&nbsp;{% endif %}{% endfor %}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="card text-white bg-dark">
+      <h5 class="card-header text-center">Video Description</h5>
+      <div class="card-body">
+        <h5 class="card-title">{{video.description}}</h5>
       </div>
     </div>
   </div>

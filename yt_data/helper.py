@@ -1,7 +1,7 @@
 import pymongo
 import math
 from random import randint
-from datetime import timedelta
+import datetime
 
 def generate_random_comments(arr, count) -> list:
     commArr = []
@@ -23,7 +23,10 @@ def likes_per_view(likes, views) -> int:
     return math.ceil(views/likes)
 
 def s_to_m(duration) -> str:
-    return str(timedelta(seconds=duration))
+    return str(datetime.timedelta(seconds=duration))
+
+def date_convert(date) -> str:
+    return (datetime.datetime(int(date[0:4]),int(date[4:6]),int(date[6:])).date)
 
 class MongoInstance:
     def __init__(self):
