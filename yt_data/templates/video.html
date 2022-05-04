@@ -75,7 +75,7 @@
     <div class="card text-white bg-dark">
       <h5 class="card-header text-center">Tags</h5>
       <div class="card-body">
-        <h5 class="card-title text-center">{% for tag in video.tags %}{{tag}}{% if forloop.counter != video.tags|length %},&nbsp;{% endif %}{% endfor %}</h5>
+        <h5 class="card-title text-center">{% if video.tags|length > 0 %}{% for tag in video.tags %}{{tag}}{% if forloop.counter != video.tags|length %},&nbsp;{% endif %}{% endfor %}{% endif %}</h5>
       </div>
     </div>
   </div>
