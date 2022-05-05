@@ -15,3 +15,6 @@ Should be "pip install -r requirements.txt" (although I'm not too sure).
 
 To run the server, simply run "python manage.py runserver" in the directory manage.py is under.
 At this point you can test if the application works correctly by going to localhost:8000 and localhost:8000/about.
+
+**THIS PROJECT IS CURRENTLY DEPLOYED ON HEROKU**
+https://lsdm-yt-data.herokuapp.com/
