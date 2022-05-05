@@ -20,6 +20,8 @@ def generate_random_comments(arr, count) -> list:
     return commArr
 
 def likes_per_view(likes, views) -> int:
+    if likes == 0:
+        return 0
     return math.ceil(views/likes)
 
 def s_to_m(duration) -> str:
@@ -30,7 +32,7 @@ def date_convert(date) -> str:
 
 class MongoInstance:
     def __init__(self):
-        self.connection = pymongo.MongoClient('mongodb+srv://bigdata:cs4243@cluster0.k5iv2.mongodb.net/test')
+        self.connection = pymongo.MongoClient('mongodb+srv://bigdata:cs4243@cluster0.k5iv2.mongodb.net/project-test')
         self.db = self.connection['project-test']
         self.videos = self.db['videos']
         self.channels = self.db['channels']
