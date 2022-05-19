@@ -27,7 +27,7 @@ def s_to_m(duration) -> str:
 
 class MongoInstance:
     def __init__(self):
-        self.connection = pymongo.MongoClient('mongodb+srv://bigdata:cs4243@cluster0.k5iv2.mongodb.net/test')
+        self.connection = pymongo.MongoClient(<MONGOCLIENT>)
         self.db = self.connection['project-test']
         self.videos = self.db['videos']
         self.channels = self.db['channels']
@@ -72,7 +72,5 @@ class MongoInstance:
         return max_pages
 
     def grab_channel_videos(self, name, skip):
-        #Query is set like this so it only returns webpage_url rather than all fields (saves a bunch of time). This will be changed to return most relevant data to be display
-        #On channel page (Such as title, date maybe?)
         videos = self.videos.find({"channel":name}, {"webpage_url":1, "title":1, "thumbnail":1, "id":1}).skip(skip).limit(50)
         return [[x['webpage_url'], x['title'], x['thumbnail'], x['id']] for x in videos]
