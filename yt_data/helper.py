@@ -77,7 +77,5 @@ class MongoInstance:
         return max_pages
 
     def grab_channel_videos(self, name, skip):
-        #Query is set like this so it only returns webpage_url rather than all fields (saves a bunch of time). This will be changed to return most relevant data to be display
-        #On channel page (Such as title, date maybe?)
         videos = self.videos.find({"channel":name}, {"webpage_url":1, "title":1, "thumbnail":1, "id":1}).skip(skip).limit(50)
         return [[x['webpage_url'], x['title'], x['thumbnail'], x['id']] for x in videos]
