@@ -32,7 +32,7 @@ def date_convert(date) -> str:
 
 class MongoInstance:
     def __init__(self):
-        self.connection = pymongo.MongoClient('mongodb+srv://bigdata:cs4243@cluster0.k5iv2.mongodb.net/project-test')
+        self.connection = pymongo.MongoClient(<MONGOCLIENT>)
         self.db = self.connection['project-test']
         self.videos = self.db['videos']
         self.channels = self.db['channels']
